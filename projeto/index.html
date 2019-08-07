@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Inicio</title>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+	<script src="jquery-3.4.0.min.js"></script>
+</head>
+<body>
+<div class="container-fluid">
+
+	<div class="row">
+		<div class="col-md-1"></div>
+		<div class="col-md-5">
+			<center><img src="img/eteabLogo.png"></center>
+		</div>
+		<div class="col-md-1"></div>
+		<div class="col-md-4">			
+		<fieldset style="margin-top: 10%">
+			<center><h1 style="font-size: 60px;">Inscrições Abertas</h1></center>
+			<p style="text-align: justify; color: #f2f2f2; font-size: 16px">
+			Estão abertas as inscrições para o Vestibulinho da ETEC Adolpho Berezin. 
+			Interessados podem se inscrever até o dia 15 de maio, às 15h.
+			A prova será realizada no dia 16 de junho.
+			A seleção é para o segundo semestre de 2019. 
+			Há 240 vagas para os cursos técnicos.
+			Há vagas para cursos técnicos de Administração, Edificações, 
+			Enfermagem, Desenvolvimento de Sistemas, Manutenção e Suporte em Informática e Turismo Receptivo.
+			</p>
+			<center>
+			<button id="cursos" class="btn form-control">Conheça os Cursos</button>
+			<button id="teste" value="panfleto.html" class="btn form-control">Crie seu panfleto</button>
+			<button id="inscricao" value="https://www.vestibulinhoetec.com.br/candidato/dados-acesso.asp" class="btn form-control">Faça a Inscrição</button>
+			</center>
+		</fieldset>
+
+		</div>
+	</div>
+
+</div>
+</body>
+</html>
+
+<style type="text/css">
+img{
+	margin-left: -20%;
+	margin-top: 10%;
+}
+body{
+	background-image:linear-gradient(rgb(220, 220, 220),#880000);
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+}
+fieldset{
+	border-radius: 15%;
+	background-color: rgba(10,10,0,0.4);
+	padding: 10%;
+}
+#cursos, #teste, #inscricao{
+	color:white;
+	width: 100%;
+	margin-top: 10px;
+	height: 70px;
+	font-size: 20px;
+	border-radius: 10px;	
+}
+#cursos{
+	background-color: #da0000;
+}
+#teste{
+	background-color: #a50000;
+}
+#inscricao{
+	background-color: #900000;
+}
+#cursos:hover, #teste:hover, #inscricao:hover{
+	background-color:#e6e6e6;
+	color:red;
+	border-radius: 25px;	
+	transition: 0.3s;
+}
+
+</style>
+
+<script type="text/javascript">
+	
+$(document).on('click','.btn',function(){
+	window.open($(this).val(), '_blank');
+});
+
+</script>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+ 
+<!-- include jquery.min.js and html2canvas.js -->
+  <script src="jquery/3.1.1/jquery.min.js"></script>
+  <script src="jquery/html2canvas.js"></script>
+ 
+<style>
+  #previewBody{
+    background-color: #9E9E9E;
+    color: #fff;
+    padding: 5px 0px 27px 30px;
+    width: 46%;
+    margin-bottom: 15px;
+}
+input#PreviewImage {
+    margin-bottom: 15px;
+}
+</style>
+ 
+<script>
+    $(document).ready(function(){
+    var getCanvas;
+    function callCanvas(){
+    html2canvas($("#previewBody"), {
+    onrendered: function(canvas) {
+    $(".preview_Canvas").html(canvas);
+    getCanvas = canvas;
+    }
+  });
+}
+   $("#PreviewImage").on('click', function () {
+    callCanvas()
+    });
+   $("#downloadimage").on('click', function () {
+      var imgageData = getCanvas.toDataURL("image/png");    
+    // Now browser starts downloading it instead of just showing it
+    var newData = imgageData.replace(/^data:image\/png/, "data:application/octet-stream");
+    $("#downloadimage").attr("download", "your_pic_name.png").attr("href", newData);
+  });
+});
+</script>
+</head>
+<body>
+<div id="previewBody">
+  <h2>CANVAS Example</h2>
+  <p>Click on preview will show canvas </p>
+  <p>Click on download will download the canvas in .png format</p>
+   </div>
+     
+        <input id="PreviewImage" type="button" value="Preview"/>
+        <a id="downloadimage" href="#">Download</a>
+        <div class="preview_Canvas">
+        </div>
+</body>
+</html>

@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Crie seu Panfleto</title>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+	<script src="jquery-3.4.0.min.js"></script>
+	<script src="html2canvas.min.js"></script>
+	<script src="canvas2image.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Anton|Varela+Round" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Francois+One" rel="stylesheet">
+
+</head>
+<body>	
+<div class="container-fluid" id="site">
+
+	<div class="row">
+		<div class="col-md-6">
+			<div class="container-fluid">
+
+				<!-- <canvas width="1366" height="657" id="myCanvas" style="display: none"></canvas> -->
+
+				<div class="row">
+					<div class="col-md-12">
+						<center><h1>Crie seu panfleto</h1></center>
+					</div>
+				</div>
+
+			
+				<div class="row">
+					<div class="col-md-6">
+					Titulo:
+					<input type="text" class="form-control" id="tituloInput">
+					</div>
+
+					<div class="col-md-6">
+					Cor do Titulo:
+					<input type="color" class="form-control" id="corTitulo">
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-md-6">
+					Subtitulo:
+					<input type="text" class="form-control" id="subtituloInput">
+					</div>
+
+					<div class="col-md-6">
+					Cor do Subtitulo:
+					<input type="color" class="form-control" id="corSubtitulo">
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-6">
+						Cor panfleto:<br>
+						<input type="color" class="form-control" id="corPanfleto">
+					</div>
+					<div class="col-md-6">
+					Imagem:
+					<select class="form-control" id="imagemSelect">
+
+					<!-- Estão abertas as inscrições para o Vestibulinho da ETEC Adolpho Berezin. Interessados podem se inscrever até o dia 15 de maio, às 15h. A prova será realizada no dia 16 de junho. A seleção é para o segundo semestre de 2019. Há 240 vagas para os cursos técnicos. Há vagas para cursos técnicos de Administração, Edificações, Enfermagem, Desenvolvimento de Sistemas, Manutenção e Suporte em Informática e Turismo Receptivo. -->
+
+						<option value="0">Nenhuma</option>
+						<option value="1">Imagem 1</option>
+						<option value="2">Imagem 2</option>
+						<option value="3">Imagem 3</option>
+						<option value="4">Imagem 4</option>
+
+					</select>
+					</div>
+
+					
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						Texto:
+						<textarea rows="5" maxlength="334" style="resize: none" id="textoInput" class="form-control"></textarea>
+					</div>
+
+					<div class="col-md-6">
+						Cor do Texto:
+						<input type="color" id="textoColor" class="form-control">
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<button id="saveBtn" onclick="download_img(this);" style="margin-top: 20px;" class="form-control btn btn-info">Salvar</button>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<div id="seta">
+							<center><h1>Seu panfleto ▼</h1></center>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+		<div class="col-md-6">
+		<center>
+			<div id="panfleto">
+
+				<h1 id="titulo">Titulo</h1>
+
+				<h4 id="subtitulo">Subtitulo</h4>
+
+				<img id="qr" src="img/qrcode.png">
+
+				<p style="text-align: justify;" id="texto"></p>
+
+				<img src="img/eteclogo.png" style="width: 100%;">
+
+			</div>
+			</center>
+		</div>
+
+	</div>
+
+  </center>
+
+
+
+</div>
+</body>
+</html>
+
+<style type="text/css">
+
+#seta{
+	margin-top: 80px;
+	animation-name: seta;
+	animation-duration: 0.3s;
+	animation-iteration-count: 3;
+	display: none;
+}
+@keyframes seta{
+	0%{margin-top:80px}
+	50%{margin-top:100px}
+	100%{margin-top:80px}
+}
+
+#qr{
+	padding-top: 10px;
+}
+#panfleto{
+	width: 400px;
+	height: 700px;
+	background-color: white;
+	padding: 20px;
+}
+#texto{
+	padding-left: 30px;
+	padding-right: 30px;
+	margin-top: -20px;
+}
+body{
+	background-color: #e1e1e1;
+	font-family: 'Varela Round', sans-serif;
+}
+p{
+	padding-top: 40px;
+}
+#titulo{
+	padding-top: 20px;
+	font-family: 'Francois One', sans-serif;
+
+}
+#subtitulo{
+	padding-top: 20px;
+}
+
+</style>
+
+<script type="text/javascript">
+
+	$(document).on('change','#imagemSelect',function(){		
+		if($(this).val() == 1)
+		{
+			$('#panfleto').css("background-image","url(img/1.jpg)");
+		}
+		if($(this).val() == 2)
+		{
+			$('#panfleto').css("background-image","url(img/2.jpg)");
+		}
+		if($(this).val() == 3)
+		{
+			$('#panfleto').css("background-image","url(img/3.jpg)");
+		}
+		if($(this).val() == 4)
+		{
+			$('#panfleto').css("background-image","url(img/4.jpg)");
+		}
+		if($(this).val() == 0)
+		{
+			$('#panfleto').css("background-image","url()");
+		}		
+	});
+
+	$(document).on('change','#textoColor',function(){
+		$("#texto").css("color",$(this).val());
+	});
+
+	//PANFLETO
+
+	$(document).on('change','#corPanfleto',function(){
+		$("#panfleto").css("background-color",$(this).val());
+	});
+
+	//TITULO
+
+	//COR
+	$(document).on('change','#corTitulo',function(){
+		$("#titulo").css("color",$(this).val());
+	});
+
+	//TEXTO
+	$(document).on('change','#tituloInput',function(){
+		$("#titulo").html($("#tituloInput").val());
+	});
+
+	//SUBTITULO
+
+	//COR
+	$(document).on('change','#corSubtitulo',function(){
+		$("#subtitulo").css("color",$(this).val());
+	});
+
+	//TEXTO
+	$(document).on('change','#subtituloInput',function(){
+		$("#subtitulo").html($("#subtituloInput").val());
+	});
+
+	$(document).on('change','#textoInput',function(){
+		$("#texto").html($(this).val());
+	})
+
+	var canvas = document.getElementById('panfleto');
+
+	$(document).on('click','#saveBtn',function(){
+		html2canvas(document.querySelector("#panfleto")).then(canvas => {
+		    document.body.appendChild(canvas);
+		});
+		$("#seta").css("display","block");
+		
+});
+        
+    
+
+</script>
